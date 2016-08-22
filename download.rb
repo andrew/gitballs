@@ -4,8 +4,8 @@ require 'json'
 
 # for a given library (rubygem/node module etc)
 
-library_name = 'redis'
-platform = 'rubygems'
+library_name = 'bootstrap'
+platform = 'npm'
 
 # download a list of every release number
 
@@ -18,7 +18,7 @@ version_numbers = versions.map{|v| v['number']}
 
 # delete any existing tarballs
 
-`rm -f ./tarballs/*.tar`
+`rm -f ./tarballs/*.tar*`
 
 # delete any existing gitball repo
 
@@ -28,15 +28,16 @@ version_numbers = versions.map{|v| v['number']}
 
 version_numbers.each do |version_number|
 
-  tarball_url = case platform
+  case platform
   when 'rubygems'
-    "https://rubygems.org/downloads/#{library_name}-#{version_number}.gem"
+    tarball_url = "https://rubygems.org/downloads/#{library_name}-#{version_number}.gem"
+    `wget -O ./tarballs/#{version_number}.tar '#{tarball_url}'`
+  when 'npm'
+    tarball_url = "https://registry.npmjs.org/#{library_name}/-/#{library_name}-#{version_number}.tgz"
+    `wget -O ./tarballs/#{version_number}.tar.gz '#{tarball_url}'`
   else
     raise "unknown tarball url for #{platform}"
   end
-
-  `wget -O ./tarballs/#{version_number}.tar '#{tarball_url}'`
-
 end
 
 # create a new git repository in /gitballs/:name
@@ -61,8 +62,16 @@ version_numbers.each do |version_number|
 
   # untar the release into the directory
 
-  `tar -C ./gitballs -xvf ./tarballs/#{version_number}.tar`
-  `cd gitballs && tar -C . -zxvf data.tar.gz && rm -f data.tar.gz metadata.gz` # rubygems specific
+  case platform
+  when 'rubygems'
+    `tar -C ./gitballs -xvf ./tarballs/#{version_number}.tar`
+    `cd gitballs && tar -C . -zxvf data.tar.gz && rm -f data.tar.gz metadata.gz` # rubygems specific
+  when 'npm'
+    `tar -C ./gitballs -zxvf ./tarballs/#{version_number}.tar.gz`
+  else
+    raise "unknown tarball url for #{platform}"
+  end
+
 
   # add and commit all files and folders with the release number as the message
 
