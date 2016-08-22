@@ -20,6 +20,10 @@ version_numbers = versions.map{|v| v['number']}
 
 `rm -f ./tarballs/*.tar`
 
+# delete any existing gitball repo
+
+`rm -rf ./gitballs/.git`
+
 # download each release tarball into /tarballs/:name
 
 version_numbers.each do |version_number|
@@ -67,7 +71,7 @@ end
 
 # optimize the git repo size
 
-`cd gitballs && git gc --aggressive --prune`
+`cd gitballs && git gc --aggressive --prune && git rm -rf .`
 
 # calculate the size of the git repository (git count-objects -vH)
 
@@ -79,8 +83,9 @@ tarball_size = `du -sh ./tarballs | cut -f1`.strip
 
 # output comparison
 
-puts "gitballs: #{gitball_size}"
+puts "releases: #{version_numbers.length}"
 puts "tarballs: #{tarball_size}"
+puts "gitballs: #{gitball_size}"
 
 # Extras
   # make a branch for each major semver number
