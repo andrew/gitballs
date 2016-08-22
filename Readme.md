@@ -10,8 +10,9 @@ Each release of a library to a package manager is usually a few line changes, bu
 
 #### Rubygems
 
+
 | gem name | # of releases | tarball size  | gitball size | % saving |
-|---|---|---|---|
+|---|---|---|---|---|---|
 | split | 48 | 2.5M | 380K | 85 |
 | redis | 52 | 1.7M | 400K | 76 |
 | capistrano | 82 | 7.0M | 772K | 89 |
@@ -26,7 +27,7 @@ Each release of a library to a package manager is usually a few line changes, bu
 #### NPM
 
 | module name | # of releases | tarball size  | gitball size | % saving |
-|---|---|---|---|
+|---|---|---|---|---|---|
 | base62 | 6 | 36K | 100K | -277 |
 | express | 274 | 23M | 9.8M | 57 |
 | mocha | 118 | 10M | 1.1M | 89 |
