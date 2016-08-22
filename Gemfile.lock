@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/librariesio/semantic.git
+  revision: a5374ac095868cf79444c1506bbbe3a8c3ad4379
+  specs:
+    semantic (1.4.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -11,6 +17,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  semantic!
   typhoeus
 
 BUNDLED WITH
