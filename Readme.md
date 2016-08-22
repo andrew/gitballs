@@ -11,7 +11,7 @@ Each release of a library to a package manager is usually a few line changes, bu
 #### Rubygems
 
 | gem name | number of releases | tarball size  | gitball size | % saving |
-|---|---|---|---|
+|---|---|---|---|---|---|
 | split | 48 | 2.5MB | 380K | 85 |
 | redis | 52 | 1.7MB | 400K | 76 |
 | capistrano | 82 | 7.0MB | 772K | 89 |
