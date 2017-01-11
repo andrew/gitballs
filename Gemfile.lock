@@ -7,10 +7,10 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    ethon (0.9.0)
+    ethon (0.10.1)
       ffi (>= 1.3.0)
     ffi (1.9.14)
-    typhoeus (1.1.0)
+    typhoeus (1.1.2)
       ethon (>= 0.9.0)
 
 PLATFORMS
@@ -21,4 +21,4 @@ DEPENDENCIES
   typhoeus
 
 BUNDLED WITH
-   1.12.5
+   1.13.6

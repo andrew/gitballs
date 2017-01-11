@@ -10,7 +10,6 @@ Each release of a library to a package manager is usually a few line changes, bu
 
 #### Rubygems
 
-
 | gem name | # of releases | tarball size  | gitball size | % saving |
 |---|---|---|---|---|---|
 | split | 48 | 2.5M | 380K | 85 |
