@@ -3,7 +3,7 @@ GEM
   specs:
     ethon (0.12.0)
       ffi (>= 1.3.0)
-    ffi (1.13.1)
+    ffi (1.14.2)
     semantic (1.6.1)
     typhoeus (1.4.0)
       ethon (>= 0.9.0)
