@@ -37,3 +37,30 @@ Each release of a library to a package manager is usually a few line changes, bu
 | chai        | 64            | 3.4M         | 780K         | 77       | 2.62MB |
 | lodash      | 88            | 79M          | 8.1M         | 90       | 70.9MB |
 | bootstrap   | 13            | 15M          | 4.4M         | 71       | 10.6MB |
+
+## Installation
+
+```
+gem install gitballs
+```
+
+## CLI
+
+```
+gitballs init <purl>     # Download and compress package versions into git repo
+gitballs stats <path>    # Show stats for an existing gitballs repo
+gitballs version         # Show version
+```
+
+Options:
+- `-o, --output DIR` - Output directory (default: ./gitballs/<package>)
+- `-q, --quiet` - Suppress progress output
+
+Examples:
+
+```
+gitballs init pkg:gem/rails
+gitballs init pkg:npm/lodash --output ./lodash-repo
+gitballs init pkg:gem/nokogiri --quiet
+gitballs stats ./gitballs/rails
+```
