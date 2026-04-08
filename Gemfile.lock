@@ -16,7 +16,7 @@ GEM
       bigdecimal
       rexml
     date (3.5.0)
-    erb (6.0.0)
+    erb (6.0.2)
     ethon (0.18.0)
       ffi (>= 1.15.0)
       logger
