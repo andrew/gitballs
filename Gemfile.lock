@@ -22,7 +22,7 @@ GEM
       logger
     ffi (1.17.2)
     hashdiff (1.2.1)
-    io-console (0.8.1)
+    io-console (0.8.2)
     irb (1.15.3)
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
