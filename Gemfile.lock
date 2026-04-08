@@ -15,7 +15,7 @@ GEM
     crack (1.0.1)
       bigdecimal
       rexml
-    date (3.5.0)
+    date (3.5.1)
     erb (6.0.0)
     ethon (0.18.0)
       ffi (>= 1.15.0)
