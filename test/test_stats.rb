@@ -75,9 +75,9 @@ class TestStats < Minitest::Test
 
   def test_compression_ratio
     stats = Gitballs::Stats.new(".", 1000)
-    stats.stub(:repo_size, 100) do
-      assert_equal 90.0, stats.compression_ratio
-    end
+    def stats.repo_size = 100
+
+    assert_equal 90.0, stats.compression_ratio
   end
 
   def test_to_s_with_tarball_size
