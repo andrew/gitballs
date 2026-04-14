@@ -3,15 +3,24 @@
 require "test_helper"
 
 class TestStats < Minitest::Test
+  def init_repo(dir)
+    system("git", "init", dir, out: File::NULL, err: File::NULL)
+    system("git", "-C", dir, "config", "user.email", "test@example.com", out: File::NULL, err: File::NULL)
+    system("git", "-C", dir, "config", "user.name", "Test", out: File::NULL, err: File::NULL)
+  end
+
+  def git_commit(dir, message)
+    system("git", "-C", dir, "add", ".", out: File::NULL, err: File::NULL)
+    system("git", "-C", dir, "commit", "-m", message, out: File::NULL, err: File::NULL)
+  end
+
   def test_release_count_with_git_repo
     Dir.mktmpdir do |dir|
-      system("git", "init", dir, out: File::NULL, err: File::NULL)
+      init_repo(dir)
       File.write(File.join(dir, "file.txt"), "content")
-      system("git", "-C", dir, "add", ".", out: File::NULL, err: File::NULL)
-      system("git", "-C", dir, "commit", "-m", "1.0.0", out: File::NULL, err: File::NULL)
+      git_commit(dir, "1.0.0")
       File.write(File.join(dir, "file.txt"), "updated")
-      system("git", "-C", dir, "add", ".", out: File::NULL, err: File::NULL)
-      system("git", "-C", dir, "commit", "-m", "1.0.1", out: File::NULL, err: File::NULL)
+      git_commit(dir, "1.0.1")
 
       stats = Gitballs::Stats.new(dir)
 
@@ -59,10 +68,9 @@ class TestStats < Minitest::Test
 
   def test_to_s_without_tarball
     Dir.mktmpdir do |dir|
-      system("git", "init", dir, out: File::NULL, err: File::NULL)
+      init_repo(dir)
       File.write(File.join(dir, "file.txt"), "content")
-      system("git", "-C", dir, "add", ".", out: File::NULL, err: File::NULL)
-      system("git", "-C", dir, "commit", "-m", "1.0.0", out: File::NULL, err: File::NULL)
+      git_commit(dir, "1.0.0")
 
       stats = Gitballs::Stats.new(dir)
       output = stats.to_s
@@ -82,10 +90,9 @@ class TestStats < Minitest::Test
 
   def test_to_s_with_tarball_size
     Dir.mktmpdir do |dir|
-      system("git", "init", dir, out: File::NULL, err: File::NULL)
+      init_repo(dir)
       File.write(File.join(dir, "file.txt"), "content")
-      system("git", "-C", dir, "add", ".", out: File::NULL, err: File::NULL)
-      system("git", "-C", dir, "commit", "-m", "1.0.0", out: File::NULL, err: File::NULL)
+      git_commit(dir, "1.0.0")
 
       stats = Gitballs::Stats.new(dir, 1024 * 1024)
       output = stats.to_s
