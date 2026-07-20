@@ -16,7 +16,7 @@ GEM
       bigdecimal
       rexml
     drb (2.2.3)
-    erb (6.0.5)
+    erb (6.0.6)
     ethon (0.18.0)
       ffi (>= 1.15.0)
       logger
