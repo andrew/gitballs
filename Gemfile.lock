@@ -40,7 +40,7 @@ GEM
     purl (1.8.1)
       addressable (~> 2.8)
     rake (13.4.2)
-    rbs (4.0.3)
+    rbs (4.1.0)
       logger
       prism (>= 1.6.0)
       tsort
