@@ -17,7 +17,7 @@ GEM
       rexml
     drb (2.2.3)
     erb (6.0.7)
-    ethon (0.18.0)
+    ethon (0.19.1)
       ffi (>= 1.15.0)
       logger
     ffi (1.17.4)
